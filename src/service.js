@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.ConfigDefaults.baseURL  = "http://localhost:5024/items";
+axios.defaults.baseURL  = "http://localhost:5024/items";
 axios.interceptors.response.use(
   response => response,
   error => {
@@ -12,14 +12,15 @@ axios.interceptors.response.use(
 );
 export default {
   getTasks: async () => {
-   // console.log('getTasks')
-    const result = await axios.get()    
+    console.log('getTasks')
+    const result = await axios.get('');    
     return result.data;
   },
 
   addTask: async(name)=>{
     try {
-      const result = await axios.post( {name});
+   console.log('addTask', {name})
+      const result = await axios.post('',{name});
     //  console.log('result', result);
       return result.data;
     } catch (error) {
