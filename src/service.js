@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-axios.defaults.baseURL  = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL  = process.env.REACT_APP_BASE_URL;
+
 axios.interceptors.response.use(
   response => response,
   error => {
+    console.log('API Base URL:', process.env.REACT_APP_API_URL);
     if (error.response && error.response.status >= 400) {
       console.error(`Error: ${error.response.status}`, error.response.data);
     }
@@ -13,7 +15,7 @@ axios.interceptors.response.use(
 export default {
   getTasks: async () => {
     console.log('getTasks')
-    const result = await axios.get('');    
+    const result = await axios.get();    
     return result.data;
   },
 
